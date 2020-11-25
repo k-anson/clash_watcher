@@ -15,7 +15,6 @@ coc_client = coc.login(
   throttle_limit=2,
   client=coc.EventsClient
 )
-# api = Clash_API(config)
 
 @bot.event
 async def on_ready():
