@@ -26,17 +26,6 @@ def create_war_commands(config:Config, bot:Bot, coc_client:EventsClient):
     # Grab our war log
     # Grab enemy war log
 
-  @war.command(name='test')
-  @commands.guild_only()
-  @commands.has_permissions(administrator=True)
-  async def  test(ctx:Context, attacker_name:str, defender_name:str):
-    gif = attack_reactions.random_good_gif('', '')
-    await bot.get_channel(config.coc_channel).send(attack_reactions.random_good_line(
-      WarMemberMock(attacker_name),
-      WarMemberMock(defender_name)
-    ))
-    await bot.get_channel(config.coc_channel).send(gif)
-
 # Analyze list of wars
 def analyze_war_log(war_log:list):
   pass
