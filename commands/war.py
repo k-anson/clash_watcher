@@ -1,0 +1,27 @@
+from discord.ext import commands
+from discord.ext.commands import Bot, Context, CommandError
+from discord import TextChannel
+from coc import EventsClient, ClanWar
+from datetime import date, datetime
+
+from config import Config
+
+def create_war_commands(config:Config, bot:Bot, coc_client:EventsClient):
+  @bot.group(invoke_without_command=True)
+  @commands.guild_only()
+  @commands.has_permissions(administrator=True)
+  async def war(ctx:Context):
+    # TODO: send tooltip
+    pass
+
+  @war.command(name='analyze')
+  @commands.guild_only()
+  @commands.has_permissions(administrator=True)
+  async def analyze_war(ctx:Context):
+    current_war:ClanWar = await coc_client.get_current_war(tag=config.clan_tag)
+    # Grab our war log
+    # Grab enemy war log
+
+# Analyze list of wars
+def analyze_war_log(war_log:list):
+  pass
