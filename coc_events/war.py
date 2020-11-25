@@ -20,11 +20,21 @@ def create_war_events(config:Config, bot:Bot, coc_client:EventsClient):
   @coc.WarEvents.war_attack(tags=config.clan_tag)
   async def on_war_attack(attack:WarAttack, war:ClanWar):
     coc_channel = bot.get_channel(config.coc_channel)
+    gif = ''
 
     # Attacker is from our clan
     if (attack.attacker.clan.tag == config.clan_tag):
-      gif = attack_reactions.random_good_gif(attack.attacker, attack.defender)
-      await coc_channel.send(attack_reactions.random_good_line(attack.attacker, attack.defender))
+      if (attack.stars == 3):
+        gif = attack_reactions.random_great_gif(attack.attacker, attack.defender)
+      elif (attack.stars == 2 & attack.destruction >= 65):
+        gif = attack_reactions.random_good_gif(attack.attacker, attack.defender)
+      elif (attack.stars == 2 & attack.destruction < 65):
+        gif = attack_reactions.random_decent_gif(attack.attacker, attack.defender)
+      elif (attack.stars == 1 & attack.destruction < 70):
+        gif = attack_reactions.random_bad_gif(attack.attacker, attack.defender)
+      else:
+        gif = attack_reactions.random_terrible_gif(attack.attacker, attack.defender)
+      await coc_channel.send(f'{attack.attacker.name} - {attack.attacker.map_position} attacked {attack.defender.name} - {attack.defender.map_position} and got {attack.stars} with {attack.destruction}% destruction')
       await coc_channel.send(gif)
     else:
-      await coc_channel.send(f'{attack.defender.name} defended against {attack.attacker.name}')
+      pass

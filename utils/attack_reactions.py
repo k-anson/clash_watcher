@@ -27,17 +27,55 @@ class Attack_Reactions():
   def random_bad_line(self, attacker:ClanWarMember, defender:ClanWarMember):
     pass
 
+  def random_great_gif(self, attacker:ClanWarMember, defender:ClanWarMember):
+    tags = [
+      'too easy',
+      'perfection',
+      'genius',
+      'amazing',
+      'holy shit'
+    ]
+    return self.random_gif(random.choice(tags))
+
   def random_good_gif(self, attacker:ClanWarMember, defender:ClanWarMember):
     tags = [
-      'good stuff'
+      'nice',
+      'yes',
+      'too easy',
+      'genius',
+      'amazing'
     ]
     return self.random_gif(random.choice(tags))
 
   def random_decent_gif(self, attacker:ClanWarMember, defender:ClanWarMember):
-    pass
+    tags = [
+      'nice',
+      'yes',
+      'alright',
+      'not bad'
+    ]
+    return self.random_gif(random.choice(tags))
 
   def random_bad_gif(self, attacker:ClanWarMember, defender:ClanWarMember):
-    pass
+    tags = [
+      'be strong',
+      'oh god',
+      'please no',
+      'what the fuck',
+      'you need help'
+    ]
+    return self.random_gif(random.choice(tags))
+
+  def random_terrible_gif(self, attacker:ClanWarMember, defender:ClanWarMember):
+    tags = [
+      'depression',
+      'oh god',
+      'please no',
+      'what the fuck',
+      'you need help',
+      'rip'
+    ]
+    return self.random_gif(random.choice(tags))
 
   def random_gif(self, tag):
     if (random.choice([False])):
