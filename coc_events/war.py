@@ -34,7 +34,7 @@ def create_war_events(config:Config, bot:Bot, coc_client:EventsClient):
         gif = attack_reactions.random_bad_gif(attack.attacker, attack.defender)
       else:
         gif = attack_reactions.random_terrible_gif(attack.attacker, attack.defender)
-      await coc_channel.send(f'{attack.attacker.name} - {attack.attacker.map_position} attacked {attack.defender.name} - {attack.defender.map_position} and got {attack.stars} with {attack.destruction}% destruction')
+      await coc_channel.send(f'{attack.attacker.name} ({attack.attacker.map_position}) attacked {attack.defender.name} ({attack.defender.map_position}) and got {attack.stars} stars with {attack.destruction}% destruction')
       await coc_channel.send(gif)
     else:
       pass

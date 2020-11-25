@@ -87,5 +87,5 @@ class Attack_Reactions():
     pass
 
   def random_tenor_gif(self, tag):
-    params = { 'key': self.config.tenor_token, 'q': tag }
+    params = { 'key': self.config.tenor_token, 'q': tag, 'limit': 1 }
     return requests.get(tenor_url, params=params).json()['results'][0]['url']
