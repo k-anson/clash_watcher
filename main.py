@@ -12,7 +12,7 @@ coc_client = coc.login(
   config.coc_dev_email,
   config.coc_dev_password,
   key_names='coc.py',
-  throttle_limit=2,
+  throttle_limit=5,
   client=coc.EventsClient
 )
 
