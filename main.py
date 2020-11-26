@@ -12,8 +12,7 @@ bot = commands.Bot(command_prefix='!')
 coc_client = coc.login(
   config.coc_dev_email,
   config.coc_dev_password,
-  key_names='coc.py',
-  throttle_limit=5,
+  key_names=config.coc_key_names,
   client=coc.EventsClient
 )
 
