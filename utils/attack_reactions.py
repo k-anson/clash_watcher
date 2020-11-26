@@ -14,19 +14,6 @@ class Attack_Reactions():
   def __init__(self, config):
     self.config = config
 
-  def random_good_line(self, attacker:ClanWarMember, defender:ClanWarMember):
-    lines = [
-      f'Great attack {attacker.name}!',
-      f'Good stuff {attacker.name}!'
-    ]
-    return random.choice(lines)
-
-  def random_decent_line(self, attacker:ClanWarMember, defender:ClanWarMember):
-    pass
-
-  def random_bad_line(self, attacker:ClanWarMember, defender:ClanWarMember):
-    pass
-
   def random_great_gif(self, attacker:ClanWarMember, defender:ClanWarMember):
     tags = [
       'too easy',
@@ -35,7 +22,9 @@ class Attack_Reactions():
       'amazing',
       'holy shit'
     ]
-    return self.random_gif(random.choice(tags))
+    tag = random.choice(tags)
+    print(f'fetching great gif using {tag} tag for {attacker.name}\'s attack')
+    return self.random_gif(tag)
 
   def random_good_gif(self, attacker:ClanWarMember, defender:ClanWarMember):
     tags = [
@@ -45,7 +34,9 @@ class Attack_Reactions():
       'genius',
       'amazing'
     ]
-    return self.random_gif(random.choice(tags))
+    tag = random.choice(tags)
+    print(f'fetching good gif using {tag} tag for {attacker.name}\'s attack')
+    return self.random_gif(tag)
 
   def random_decent_gif(self, attacker:ClanWarMember, defender:ClanWarMember):
     tags = [
@@ -54,7 +45,9 @@ class Attack_Reactions():
       'alright',
       'not bad'
     ]
-    return self.random_gif(random.choice(tags))
+    tag = random.choice(tags)
+    print(f'fetching decent gif using {tag} tag for {attacker.name}\'s attack')
+    return self.random_gif(tag)
 
   def random_bad_gif(self, attacker:ClanWarMember, defender:ClanWarMember):
     tags = [
@@ -64,7 +57,9 @@ class Attack_Reactions():
       'what the fuck',
       'you need help'
     ]
-    return self.random_gif(random.choice(tags))
+    tag = random.choice(tags)
+    print(f'fetching bad gif using {tag} tag for {attacker.name}\'s attack')
+    return self.random_gif(tag)
 
   def random_terrible_gif(self, attacker:ClanWarMember, defender:ClanWarMember):
     tags = [
@@ -75,7 +70,9 @@ class Attack_Reactions():
       'you need help',
       'rip'
     ]
-    return self.random_gif(random.choice(tags))
+    tag = random.choice(tags)
+    print(f'fetching terrible gif using {tag} tag for {attacker.name}\'s attack')
+    return self.random_gif(tag)
 
   def random_gif(self, tag):
     if (random.choice([False])):
