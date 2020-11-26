@@ -26,11 +26,11 @@ def create_war_events(config:Config, bot:Bot, coc_client:EventsClient):
     if (attack.attacker.clan.tag == config.clan_tag):
       if (attack.stars == 3):
         gif = attack_reactions.random_great_gif(attack.attacker, attack.defender)
-      elif (attack.stars == 2 & attack.destruction >= 65):
+      elif (attack.stars == 2 and attack.destruction >= 65):
         gif = attack_reactions.random_good_gif(attack.attacker, attack.defender)
-      elif (attack.stars == 2 & attack.destruction < 65):
+      elif (attack.stars == 2 and attack.destruction < 65):
         gif = attack_reactions.random_decent_gif(attack.attacker, attack.defender)
-      elif (attack.stars == 1 & attack.destruction < 70):
+      elif (attack.stars == 1 and attack.destruction < 70):
         gif = attack_reactions.random_bad_gif(attack.attacker, attack.defender)
       else:
         gif = attack_reactions.random_terrible_gif(attack.attacker, attack.defender)
