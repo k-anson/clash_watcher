@@ -6,26 +6,13 @@ from config import Config
 from coc.wars import ClanWar
 
 giphy_url = 'https://api.giphy.com/v1/random'
-tenor_url = 'https://api.tenor.com/v1/random'
+tenor_url = 'https://api.tenor.com/v1/search'
 
 class Attack_Reactions():
   config:Config
 
   def __init__(self, config):
     self.config = config
-
-  def random_good_line(self, attacker:ClanWarMember, defender:ClanWarMember):
-    lines = [
-      f'Great attack {attacker.name}!',
-      f'Good stuff {attacker.name}!'
-    ]
-    return random.choice(lines)
-
-  def random_decent_line(self, attacker:ClanWarMember, defender:ClanWarMember):
-    pass
-
-  def random_bad_line(self, attacker:ClanWarMember, defender:ClanWarMember):
-    pass
 
   def random_great_gif(self, attacker:ClanWarMember, defender:ClanWarMember):
     tags = [
@@ -35,7 +22,9 @@ class Attack_Reactions():
       'amazing',
       'holy shit'
     ]
-    return self.random_gif(random.choice(tags))
+    tag = random.choice(tags)
+    print(f'fetching great gif using {tag} tag for {attacker.name}\'s attack')
+    return self.random_gif(tag)
 
   def random_good_gif(self, attacker:ClanWarMember, defender:ClanWarMember):
     tags = [
@@ -45,7 +34,9 @@ class Attack_Reactions():
       'genius',
       'amazing'
     ]
-    return self.random_gif(random.choice(tags))
+    tag = random.choice(tags)
+    print(f'fetching good gif using {tag} tag for {attacker.name}\'s attack')
+    return self.random_gif(tag)
 
   def random_decent_gif(self, attacker:ClanWarMember, defender:ClanWarMember):
     tags = [
@@ -54,7 +45,9 @@ class Attack_Reactions():
       'alright',
       'not bad'
     ]
-    return self.random_gif(random.choice(tags))
+    tag = random.choice(tags)
+    print(f'fetching decent gif using {tag} tag for {attacker.name}\'s attack')
+    return self.random_gif(tag)
 
   def random_bad_gif(self, attacker:ClanWarMember, defender:ClanWarMember):
     tags = [
@@ -64,7 +57,9 @@ class Attack_Reactions():
       'what the fuck',
       'you need help'
     ]
-    return self.random_gif(random.choice(tags))
+    tag = random.choice(tags)
+    print(f'fetching bad gif using {tag} tag for {attacker.name}\'s attack')
+    return self.random_gif(tag)
 
   def random_terrible_gif(self, attacker:ClanWarMember, defender:ClanWarMember):
     tags = [
@@ -75,7 +70,9 @@ class Attack_Reactions():
       'you need help',
       'rip'
     ]
-    return self.random_gif(random.choice(tags))
+    tag = random.choice(tags)
+    print(f'fetching terrible gif using {tag} tag for {attacker.name}\'s attack')
+    return self.random_gif(tag)
 
   def random_gif(self, tag):
     if (random.choice([False])):
@@ -87,5 +84,10 @@ class Attack_Reactions():
     pass
 
   def random_tenor_gif(self, tag):
-    params = { 'key': self.config.tenor_token, 'q': tag, 'limit': 1 }
+    params = {
+      'key': self.config.tenor_token,
+      'q': tag,
+      'limit': 1,
+      'pos': random.randint(1, 50)
+    }
     return requests.get(tenor_url, params=params).json()['results'][0]['url']
