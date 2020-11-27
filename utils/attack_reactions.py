@@ -6,7 +6,7 @@ from config import Config
 from coc.wars import ClanWar
 
 giphy_url = 'https://api.giphy.com/v1/random'
-tenor_url = 'https://api.tenor.com/v1/random'
+tenor_url = 'https://api.tenor.com/v1/search'
 
 class Attack_Reactions():
   config:Config
@@ -84,5 +84,10 @@ class Attack_Reactions():
     pass
 
   def random_tenor_gif(self, tag):
-    params = { 'key': self.config.tenor_token, 'q': tag, 'limit': 1 }
+    params = {
+      'key': self.config.tenor_token,
+      'q': tag,
+      'limit': 1,
+      'pos': random.randint(1, 50)
+    }
     return requests.get(tenor_url, params=params).json()['results'][0]['url']
